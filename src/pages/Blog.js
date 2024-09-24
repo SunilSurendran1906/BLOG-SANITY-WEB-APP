@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import client from "../client"; // Make sure this is stable and not re-initialized
+import client from "../client"; 
 import { Link } from "react-router-dom";
 
 export default function Blog() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    // Ensure that the client is not re-creating a new instance on each render
+
     client
       .fetch(
         `*[_type=="post"] {
@@ -25,7 +25,7 @@ export default function Blog() {
       )
       .then((data) => setPosts(data))
       .catch(console.error);
-  }, []); // Empty dependency array means this runs only once
+  }, []);
 
   console.log(posts);
 
